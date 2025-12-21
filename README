@@ -1,0 +1,68 @@
+Gen-Alpha-Sync: AI Wellness Companion
+Gen-Alpha-Sync is a specialized AI-driven ecosystem designed for the emotional support and wellness tracking of children (Generation Alpha). By combining the warmth of a traditional "Grandma" persona with cutting-edge Gemini 3 AI models and Google Cloud Platform (GCP) infrastructure, we provide a safe, empathetic space for children to express their feelings and visualize their emotional growth.
+How to Evaluate (Judges' Guide)
+Since this is a backend-focused submission, please use the Interactive API Documentation to test the AI agents live.
+
+Open the API Portal: [INSERT YOUR CLOUD RUN URL HERE]/docs
+
+Test Grandma Mode (/chat):
+
+Click on the POST /chat bar.
+
+Click "Try it out".
+
+Use the following sample input:
+
+JSON
+
+{
+  "user_id": "judge_test",
+  "message": "I feel a bit lonely today and missed my school bus.",
+  "language": "English"
+}
+Click Execute to see the AI Grandma's empathetic response (dadi_reply).
+
+Test the Mood Diary (/mood/save-entry):
+
+This triggers the Wellness Orchestrator.
+
+Input a mood note like: "I had a great day playing soccer!"
+
+The response will include wellness_advice and a garden_visual status (e.g., "blooming").
+
+The Technical Architecture (The "Under the Hood" Flow)
+In your backend, these agents act as a coordinated "Council." When a message comes in via main.py, it flows through them in this order:
+
+Safety & Explainability Agent: First, it scrubs the data for PII (names, addresses) to ensure privacy before it ever hits the cloud.
+
+Crisis Guardian Agent: It scans the message for "red flags" (panic, self-harm). If found, it bypasses everything to trigger an immediate alert.
+
+Emotion Intelligence Agent: It analyzes the mood (happy, sad, stressed) and decides if it can handle the reply locally or if it needs to call Gemini 3.
+
+Persona Agent (Grandma): It takes the "logic" from the emotion agent and "dresses it up" in warm, elder-like language and rural metaphors.
+
+Wellness Planning Agent: It looks at the conclusion of the chat and updates the "Mood Garden" or suggests a breathing exercise.
+
+Integrated Agent Mapping for the README
+You can add this "Mapping" to your README.md so the judges see exactly how you used your agents:
+
+📍 Agent Mapping & Use Cases
+Interaction Layer: The Persona Agent translates Gemini 3's raw intelligence into "Grandma Mode," ensuring culturally resonant support.
+
+Logic Layer: The Emotion Intelligence Agent detects stress patterns and manages cloud escalation for complex queries.
+
+Guardrail Layer: The Crisis Guardian and Safety Agents run 24/7 in the background of every API call to ensure 100% child safety.
+
+Outcome Layer: The Wellness Planning Agent converts interactions into actionable routines and visual garden progress stored in Firestore.
+
+Google Cloud Integration
+We have utilized GCP credits to ensure enterprise-grade reliability:
+
+AI Models: Gemini 3 (Flash) via Vertex AI for lightning-fast, intelligent reasoning.
+
+Cloud Storage & Database: Google Cloud Firestore for real-time, NoSQL storage of user profiles and wellness history.
+
+Compute: Google Cloud Run for serverless, containerized deployment.
+
+Our goal is simple: To ensure that as the world becomes more digital, the next generation doesn't feel any less heard.
+

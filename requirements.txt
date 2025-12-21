@@ -1,0 +1,8 @@
+python-dotenv
+fastapi
+uvicorn
+google-cloud-firestore
+google-generativeai
+pydantic
+python-dotenv
+google-cloud-text-to-speech
